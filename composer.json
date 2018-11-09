@@ -10,6 +10,7 @@
   "description": "视频相关处理命令",
   "require": {
     "php": ">=7.1",
+    "xltxlm/fileinfo": "@dev",
     "xltxlm/shell": "@dev"
   },
   "autoload": {

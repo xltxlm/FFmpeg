@@ -1,40 +1,15 @@
 <?php
 namespace xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
 
+use \xltxlm\ffmpeg\Ffmpeg\__to;
 /**
  * 获取视频的基础信息;
 */
 abstract class Ffmpeg_Videoinfo_implements
 {
 
+    use __to;
 
-
-    /* @var string  视频文件的路径 */
-        protected $FilePath = '';
-    
-
-
-    /**
-     * @return string;
-     */
-    public function getFilePath():string    {
-        return $this->FilePath;
-    }
-
-
-
-
-
-
-    /**
-     * @param string $FilePath;
-     * @return $this
-     */
-    public function setFilePath(string $FilePath)
-    {
-        $this->FilePath = $FilePath;
-        return $this;
-    }
 
     /* @var int  宽度 */
         protected $width = 0;
@@ -168,6 +143,33 @@ abstract class Ffmpeg_Videoinfo_implements
     protected function setduration(string $duration)
     {
         $this->duration = $duration;
+        return $this;
+    }
+
+    /* @var string  宽高比,比指定值大,意味着视频的高比较小 */
+        protected $aspect = '';
+    
+
+
+    /**
+     * @return string;
+     */
+    public function getaspect():string    {
+        return $this->aspect;
+    }
+
+
+
+
+
+
+    /**
+     * @param string $aspect;
+     * @return $this
+     */
+    public function setaspect(string $aspect)
+    {
+        $this->aspect = $aspect;
         return $this;
     }
 

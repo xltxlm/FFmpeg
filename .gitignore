@@ -9,3 +9,5 @@ log@*.json
 vendor/**/.git
 vendor
 oceans.mp4
+movie.mp4
+test/*.mp4

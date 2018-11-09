@@ -12,16 +12,6 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
 {
 
 
-    /**
-     * Videoinfo constructor.
-     */
-    public function __construct(string $FilePath = '')
-    {
-        if ($FilePath) {
-            $this->setFilePath($FilePath);
-        }
-    }
-
     public function setFilePath(string $FilePath)
     {
         $json_info = (new Exec())
@@ -34,6 +24,7 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
         $this->width = $video_info['streams'][0]['width'];
         $this->height = $video_info['streams'][0]['height'];
         $this->duration = floor($video_info['format']['duration']);
+        $this->aspect = sprintf('%.6f', $this->width / $this->height);
         return parent::setFilePath($FilePath);
     }
 
