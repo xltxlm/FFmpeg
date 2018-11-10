@@ -42,4 +42,10 @@ Trait __to_implements
     */
     abstract public function __Ffmpeg_Videoinfo():\xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
 
+    /**
+     *   ;
+     *   @return :\xltxlm\fileinfo\Fileinfo;
+    */
+    abstract public function __Fileinfo():\xltxlm\fileinfo\Fileinfo;
+
 }

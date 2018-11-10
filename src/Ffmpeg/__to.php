@@ -2,6 +2,8 @@
 
 namespace xltxlm\ffmpeg\Ffmpeg;
 
+use xltxlm\fileinfo\Fileinfo;
+
 
 /**
  * ;
@@ -23,6 +25,11 @@ Trait __to
     public function __Ffmpeg_Videoinfo(): \xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo
     {
         return new \xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo($this->getFilePath());
+    }
+
+    public function __Fileinfo(): \xltxlm\fileinfo\Fileinfo
+    {
+        return (new Fileinfo($this->getFilePath()));
     }
 
 
