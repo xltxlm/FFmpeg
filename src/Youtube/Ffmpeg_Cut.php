@@ -4,6 +4,7 @@ namespace xltxlm\ffmpeg\Youtube;
 
 use xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
 use xltxlm\fileinfo\Features\Fileinfo_tmp;
+use xltxlm\fileinfo\Fileinfo;
 use xltxlm\shell\Exec;
 
 
@@ -49,6 +50,9 @@ Trait Ffmpeg_Cut
             ->setCmd("ffmpeg  -y  -i $p240_file -movflags +faststart  -acodec copy -vcodec copy    $p240_mov")
             ->__invoke();
 
+        //删除掉过渡的文件
+        (new Fileinfo($p240_file))
+            ->Unlink();
 
         return new Ffmpeg_Videoinfo($p240_mov);
     }
