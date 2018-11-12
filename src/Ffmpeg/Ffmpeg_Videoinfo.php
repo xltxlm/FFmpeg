@@ -2,6 +2,7 @@
 
 namespace xltxlm\ffmpeg\Ffmpeg;
 
+use xltxlm\ffmpeg\Exception\Exception_Fileerror;
 use xltxlm\shell\Exec;
 
 
@@ -20,6 +21,9 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
         $video_info = json_decode($json_info, true);
 
         $this->filesize = $video_info['format']['size'];
+        if ($this->filesize < 1) {
+            throw new Exception_Fileerror($FilePath);
+        }
         $this->bit_rate = $video_info['format']['bit_rate'];
         $this->width = $video_info['streams'][0]['width'];
         $this->height = $video_info['streams'][0]['height'];
