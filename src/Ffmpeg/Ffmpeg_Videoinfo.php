@@ -3,6 +3,7 @@
 namespace xltxlm\ffmpeg\Ffmpeg;
 
 use xltxlm\ffmpeg\Exception\Exception_Fileerror;
+use xltxlm\shell\Exception\Exception_Exec;
 use xltxlm\shell\Exec;
 
 
@@ -15,9 +16,13 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
 
     public function setFilePath(string $FilePath)
     {
-        $json_info = (new Exec())
-            ->setCmd("ffprobe -v quiet -print_format json -show_format -show_streams {$FilePath}")
-            ->__invoke();
+        try {
+            $json_info = (new Exec())
+                ->setCmd("ffprobe -v quiet -print_format json -show_format -show_streams {$FilePath} 2>&1")
+                ->__invoke();
+        } catch (Exception_Exec $e) {
+            throw new Exception_Fileerror($e->getMessage());
+        }
         $video_info = json_decode($json_info, true);
 
         $this->filesize = $video_info['format']['size'];
