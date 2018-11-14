@@ -36,6 +36,36 @@ Trait __to_implements
         return $this;
     }
 
+    /* @var bool  开启关闭命令行打印的调试信息 */
+        protected $debug = false;
+    
+
+
+    /**
+     * @return bool;
+     */
+    public function getdebug():bool    {
+        return $this->debug;
+    }
+
+
+    public function isdebug():bool    {
+            return $this->getdebug();
+    }
+    
+
+
+
+    /**
+     * @param bool $debug;
+     * @return $this
+     */
+    public function setdebug(bool $debug)
+    {
+        $this->debug = $debug;
+        return $this;
+    }
+
     /**
      *   ;
      *   @return :\xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;

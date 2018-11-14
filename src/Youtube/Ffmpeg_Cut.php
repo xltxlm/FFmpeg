@@ -40,6 +40,7 @@ Trait Ffmpeg_Cut
 
 
         (new Exec("ffmpeg -y -i {$this->getFilePath()}    -c:v libx264 -preset slow -profile:v main -vf 'scale=$scale,pad=" . self::WIDTH . ":" . self::HEIGHT . ":{$pad}:black' -aspect 16:9 $p240_file"))
+            ->setDebug($this->isdebug())
             ->__invoke();
 
         $p240_mov = (new Fileinfo_tmp($this->getFilePath()))
@@ -48,6 +49,7 @@ Trait Ffmpeg_Cut
         //优化播放头
         (new Exec())
             ->setCmd("ffmpeg  -y  -i $p240_file -movflags +faststart  -acodec copy -vcodec copy    $p240_mov")
+            ->setDebug($this->isdebug())
             ->__invoke();
 
         //删除掉过渡的文件

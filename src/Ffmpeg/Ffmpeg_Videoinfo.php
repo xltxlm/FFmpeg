@@ -19,6 +19,7 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
         try {
             $json_info = (new Exec())
                 ->setCmd("ffprobe -v quiet -print_format json -show_format -show_streams {$FilePath} 2>&1")
+                ->setDebug($this->isdebug())
                 ->__invoke();
         } catch (Exception_Exec $e) {
             throw new Exception_Fileerror($e->getMessage());
