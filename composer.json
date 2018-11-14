@@ -7,11 +7,11 @@
     }
   ],
   "minimum-stability": "dev",
-  "description": "视频相关处理命令",
+  "description":"视频相关处理命令",
   "require": {
-    "php": "~7.1",
-    "xltxlm/fileinfo": "@dev",
-    "xltxlm/shell": "@dev"
+    "xltxlm/Fileinfo": "@dev",
+    "xltxlm/shell": "@dev",
+    "php": "~7.1"
   },
   "autoload": {
     "psr-4": {
