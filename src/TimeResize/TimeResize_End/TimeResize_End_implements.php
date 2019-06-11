@@ -12,36 +12,36 @@ abstract class TimeResize_End_implements
 
 
     /* @var int   */
-        protected $second_length = 0;
+            protected $second_length = 0;
+        
+
     
+        /**
+        * @return int;
+        */
+                    public function getsecond_length():int            {
+                        return $this->second_length;
+            }
+
+        
+            
 
 
+    
     /**
-     * @return int;
-     */
-    public function getsecond_length():int    {
-        return $this->second_length;
-    }
-
-
-
-
-
-
-    /**
-     * @param int $second_length;
-     * @return $this
-     */
-    public function setsecond_length(int $second_length)
-    {
+    * @param int $second_length;
+    * @return $this
+    */
+            public function setsecond_length(int $second_length)
+        {
         $this->second_length = $second_length;
         return $this;
-    }
-
+        }
+    
     /**
-     *   ;
-     *   @return :\xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
+    *   ;
+    *   @return :\xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
     */
     abstract public function __invoke():\xltxlm\ffmpeg\Ffmpeg\Ffmpeg_Videoinfo;
-
+    
 }

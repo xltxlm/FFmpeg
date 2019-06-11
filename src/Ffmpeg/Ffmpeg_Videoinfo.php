@@ -31,8 +31,8 @@ class Ffmpeg_Videoinfo extends Ffmpeg_Videoinfo\Ffmpeg_Videoinfo_implements
             throw new Exception_Fileerror($FilePath);
         }
         $this->bit_rate = $video_info['format']['bit_rate'];
-        $this->width = $video_info['streams'][0]['width'];
-        $this->height = $video_info['streams'][0]['height'];
+        $this->width = $video_info['streams'][0]['width']?:$video_info['streams'][1]['width'];
+        $this->height = $video_info['streams'][0]['height']?:$video_info['streams'][1]['height'];
         $this->duration = floor($video_info['format']['duration']);
         $this->aspect = sprintf('%.6f', $this->width / $this->height);
         return parent::setFilePath($FilePath);
